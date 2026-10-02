@@ -1,0 +1,20 @@
+{
+  "id": 5,
+  "title": "Room Climate Hub Predictive Maintenance",
+  "repository_slug": "room-climate-hub-predictive-maintenance",
+  "category": "Smart Home",
+  "platform": "Home Assistant + ESPHome",
+  "platform_family": "esphome",
+  "difficulty": "Intermediate",
+  "estimated_hours": 20,
+  "connectivity": "Matter",
+  "components": [
+    "current sensor",
+    "servo motor"
+  ],
+  "scope": "Build a smart home prototype that uses current sensor, servo motor to detect early signs of equipment problems. Include setup instructions, a circuit diagram, tested firmware, and sample output.",
+  "key_deliverable": "Predictive Maintenance demonstration with repeatable test steps",
+  "mode": "interactive_monitor",
+  "entrypoint": "firmware/device.yaml",
+  "roadmap_source": "openmaker-2100-project-roadmap.xlsx"
+}
