@@ -14,7 +14,8 @@
   ],
   "scope": "Build a smart home prototype that uses current sensor, servo motor to detect early signs of equipment problems. Include setup instructions, a circuit diagram, tested firmware, and sample output.",
   "key_deliverable": "Predictive Maintenance demonstration with repeatable test steps",
-  "mode": "interactive_monitor",
+  "mode": "current_anomaly_monitor",
   "entrypoint": "firmware/device.yaml",
-  "roadmap_source": "openmaker-2100-project-roadmap.xlsx"
+  "roadmap_source": "openmaker-2100-project-roadmap.xlsx",
+  "connectivity_implementation": "ESPHome native API to Home Assistant; separate Matterbridge/matterbridge-hass"
 }

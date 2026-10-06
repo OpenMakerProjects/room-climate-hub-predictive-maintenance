@@ -1,15 +1,25 @@
-name: Validate project
-
-on:
-  push:
-  pull_request:
-
+name: Completion checks
+on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
-  validate:
+  host:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
       - run: python tools/validate.py
+      - run: python tools/validate_completion.py
+  board:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: cp firmware/secrets.example.yaml firmware/secrets.yaml
+      - run: esphome config firmware/device.yaml
+      - run: esphome compile firmware/device.yaml
