@@ -12,3 +12,5 @@ struct MaintenancePolicy {
  bool ready()const{return samples>=20&&!warning;}
  void reset(){baseline=0;samples=0;rising=0;warning=false;}
 };
+
+inline MaintenancePolicy& maintenancePolicy(){static MaintenancePolicy policy;return policy;}

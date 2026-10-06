@@ -22,8 +22,6 @@ i2c:
   scl: GPIO22
   scan: true
 globals:
-  - id: policy
-    type: MaintenancePolicy
   - id: last_sample
     type: uint32_t
     initial_value: '0'
@@ -52,29 +50,29 @@ sensor:
         then:
           - lambda: |-
               id(last_sample)=millis();
-              id(policy).feed(x);
-              if(id(policy).warning) id(pointer_servo).detach();
+              maintenancePolicy().feed(x);
+              if(maintenancePolicy().warning) id(pointer_servo).detach();
     bus_voltage:
       name: Servo Supply Voltage
 binary_sensor:
   - platform: template
     name: Maintenance Warning
-    lambda: 'return id(policy).warning;'
+    lambda: 'return maintenancePolicy().warning;'
   - platform: template
     name: Baseline Ready
-    lambda: 'return id(policy).ready();'
+    lambda: 'return maintenancePolicy().ready();'
 button:
   - platform: template
     name: Reset Baseline
     on_press:
       - servo.detach: pointer_servo
-      - lambda: 'id(policy).reset(); id(last_sample)=millis();'
+      - lambda: 'maintenancePolicy().reset(); id(last_sample)=millis();'
   - platform: template
     name: Small Pointer Motion
     on_press:
       - if:
           condition:
-            lambda: 'return id(policy).ready() && uint32_t(millis()-id(last_sample))<3000;'
+            lambda: 'return maintenancePolicy().ready() && uint32_t(millis()-id(last_sample))<3000;'
           then:
             - servo.write:
                 id: pointer_servo
@@ -86,6 +84,6 @@ interval:
     then:
       - lambda: |-
           if(uint32_t(millis()-id(last_sample))>=3000){
-            id(policy).warning=true;
+            maintenancePolicy().warning=true;
             id(pointer_servo).detach();
           }
