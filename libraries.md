@@ -1,0 +1,1 @@
+ESPHome 2025.9.3 with ESP32 Arduino target and INA219, servo/LEDC, native API components; platform dependencies resolved by pinned ESPHome release. Matterbridge and matterbridge-hass are separate third-party bridge dependencies configured on the user's home hub, with their own licenses. No hub credentials are stored here.

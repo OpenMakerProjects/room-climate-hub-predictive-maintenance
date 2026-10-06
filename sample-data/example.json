@@ -1,12 +1,11 @@
 {
-  "project_id": 5,
-  "timestamp": "2026-01-01T00:00:00Z",
-  "state": "normal",
-  "score": 0.42,
-  "output": false,
-  "values": [
-    0.38,
-    0.43,
-    0.45
-  ]
+  "source": "synthetic_demo",
+  "baseline_A": 0.2,
+  "consecutive_A": [
+    0.31,
+    0.32,
+    0.33
+  ],
+  "maintenance_warning": true,
+  "interpretation": "threshold anomaly; not a validated failure prediction"
 }

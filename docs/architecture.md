@@ -1,9 +1,1 @@
-# Architecture
-
-```text
-Sensors -> validation and filtering -> interactive monitor -> output/alert
-                                      |
-                                      +-> Matter telemetry and logs
-```
-
-The implementation separates acquisition, decision logic, output handling, and telemetry. Hardware-specific access is kept at the edge so the core behavior can be tested with simulated readings.
+ESP32 current monitoring → Wi-Fi ESPHome native API → Home Assistant → separately configured Matterbridge/matterbridge-hass → Matter controller. Firmware is not native Matter. See README and docs/circuit-diagram.svg.
